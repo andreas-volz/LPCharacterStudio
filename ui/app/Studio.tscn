@@ -1,4 +1,4 @@
-[gd_scene load_steps=200 format=3 uid="uid://dnc48rih0lfqo"]
+[gd_scene load_steps=199 format=3 uid="uid://dnc48rih0lfqo"]
 
 [ext_resource type="Script" uid="uid://c7wfiayf8w2ym" path="res://ui/app/Studio.gd" id="1_5oktx"]
 [ext_resource type="Script" uid="uid://c65dnmsmw34n1" path="res://ui/controls/VariantList.gd" id="2_m1sir"]
@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://daua64qycr2kg" path="res://assets/ui/arrows/ArrowRight.svg" id="10_3syfw"]
 [ext_resource type="Texture2D" uid="uid://dp8pftuoruyb8" path="res://assets/ui/arrows/ArrowDown.svg" id="11_u8ull"]
 [ext_resource type="Shader" uid="uid://dira0r8dkv2o4" path="res://shader/Blueprint.gdshader" id="13_u8ull"]
-[ext_resource type="Texture2D" uid="uid://ddsa50ggqr5jh" path="res://assets/experimental/LPCDemo2/body/bodies/male/run/light.png" id="14_u8ull"]
 [ext_resource type="Script" uid="uid://c5yu2osw8da3q" path="res://addons/SATF/runtime/animation_tree/SATFAnimationTree.gd" id="16_a4d7p"]
 [ext_resource type="Script" uid="uid://dwt7mp3xxjgxs" path="res://addons/SATF/runtime/animation_tree/SATFAnimationNodeBlendSpace2D.gd" id="16_vukv4"]
 [ext_resource type="Script" uid="uid://bsj5lyiw7visf" path="res://ui/controls/LPCLayerContainer.gd" id="17_y0lof"]
@@ -3684,7 +3683,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5oktx")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3692,15 +3691,41 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HSplitContainer" type="HSplitContainer" parent="HBoxContainer"]
+[node name="MainButtonContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ResetButton" type="Button" parent="VBoxContainer/MainButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Reset"
+
+[node name="RandomButton" type="Button" parent="VBoxContainer/MainButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Random"
+
+[node name="VariantButton" type="Button" parent="VBoxContainer/MainButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Variant"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer/MainButtonContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 split_offset = 100
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/HSplitContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer"]
 layout_mode = 2
 
-[node name="BodyTypes" type="OptionButton" parent="HBoxContainer/HSplitContainer/VBoxContainer"]
+[node name="BodyTypes" type="OptionButton" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 selected = 0
@@ -3718,51 +3743,51 @@ popup/item_4/id = 4
 popup/item_5/text = "child"
 popup/item_5/id = 5
 
-[node name="VSplitContainer" type="VSplitContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer"]
+[node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="SheetDefinitionTree" type="Tree" parent="HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer"]
+[node name="SheetDefinitionTree" type="Tree" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_vertical = 3
 hide_root = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MatchBodyColorCheck" type="CheckBox" parent="HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer"]
+[node name="MatchBodyColorCheck" type="CheckBox" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 button_pressed = true
 text = "Match Body Color"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="PaletteOption" type="OptionButton" parent="HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer/HBoxContainer"]
+[node name="PaletteOption" type="OptionButton" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VariantScaleControl" type="MarginContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer/HBoxContainer"]
+[node name="VariantScaleControl" type="MarginContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("2_xl5ik")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer/HBoxContainer/VariantScaleControl"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer/HBoxContainer/VariantScaleControl"]
 layout_mode = 2
 
-[node name="VariantPreviewScaleLabel" type="Label" parent="HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer/HBoxContainer/VariantScaleControl/VBoxContainer"]
+[node name="VariantPreviewScaleLabel" type="Label" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer/HBoxContainer/VariantScaleControl/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "100 %"
 horizontal_alignment = 1
 
-[node name="VariantPreviewScaleSlider" type="HSlider" parent="HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer/HBoxContainer/VariantScaleControl/VBoxContainer"]
+[node name="VariantPreviewScaleSlider" type="HSlider" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer/HBoxContainer/VariantScaleControl/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -3775,87 +3800,66 @@ tick_count = 10
 ticks_on_borders = true
 ticks_position = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_adhq1")
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 3
 theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer/PanelContainer/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="VariantList" type="HFlowContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer"]
+[node name="VariantList" type="HFlowContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("2_m1sir")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="ResetButton" type="Button" parent="HBoxContainer/HSplitContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Reset"
-
-[node name="RandomButton" type="Button" parent="HBoxContainer/HSplitContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Random"
-
-[node name="VariantButton" type="Button" parent="HBoxContainer/HSplitContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Variant"
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/HSplitContainer"]
-layout_mode = 2
-
-[node name="HSplitContainer" type="HSplitContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer2"]
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PreviewPanel" type="PanelContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer"]
+[node name="PreviewPanel" type="PanelContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="BackPanel" type="Panel" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel"]
+[node name="BackPanel" type="Panel" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel"]
 visible = false
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_vukv4")
 
-[node name="Checkerboard" type="TextureRect" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel"]
+[node name="Checkerboard" type="TextureRect" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel"]
 material = ExtResource("17_yheby")
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("18_rdsxb")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel"]
 layout_mode = 2
 
-[node name="AnimationSelector" type="OptionButton" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/VBoxContainer"]
+[node name="AnimationSelector" type="OptionButton" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="SATFSpriteControl" type="Control" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/VBoxContainer" node_paths=PackedStringArray("satf_sprite")]
+[node name="SATFSpriteControl" type="Control" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/VBoxContainer" node_paths=PackedStringArray("satf_sprite")]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("7_hgyrf")
 satf_sprite = NodePath("SATFAnimationPreview")
 metadata/_custom_type_script = "uid://brgxldj2hi00u"
 
-[node name="SATFAnimationPreview" type="Node2D" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/VBoxContainer/SATFSpriteControl" node_paths=PackedStringArray("animation_player")]
+[node name="SATFAnimationPreview" type="Node2D" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/VBoxContainer/SATFSpriteControl" node_paths=PackedStringArray("animation_player")]
 unique_name_in_owner = true
 texture_filter = 1
 script = ExtResource("18_yheby")
@@ -3866,7 +3870,7 @@ animation_frame = 0
 region_enabled = true
 metadata/_custom_type_script = "uid://b64hyfn5m3vrp"
 
-[node name="SATFAnimationPlayer" type="AnimationPlayer" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/VBoxContainer/SATFSpriteControl/SATFAnimationPreview"]
+[node name="SATFAnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/VBoxContainer/SATFSpriteControl/SATFAnimationPreview"]
 unique_name_in_owner = true
 libraries = {
 &"SATF": SubResource("AnimationLibrary_8mj1s")
@@ -3874,7 +3878,7 @@ libraries = {
 script = ExtResource("6_v2r1i")
 metadata/_custom_type_script = "uid://cursdeatl3ygy"
 
-[node name="SATFAnimationTree" type="AnimationTree" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/VBoxContainer/SATFSpriteControl/SATFAnimationPreview"]
+[node name="SATFAnimationTree" type="AnimationTree" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/VBoxContainer/SATFSpriteControl/SATFAnimationPreview"]
 active = false
 tree_root = SubResource("AnimationNodeStateMachine_onqxp")
 anim_player = NodePath("../SATFAnimationPlayer")
@@ -3901,11 +3905,11 @@ parameters/watering/blend_position = Vector2(0, 0)
 script = ExtResource("16_a4d7p")
 metadata/_custom_type_script = "uid://c5yu2osw8da3q"
 
-[node name="Control" type="Control" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel"]
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel"]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -3918,72 +3922,72 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="DirectionContainer" type="PanelContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer"]
+[node name="DirectionContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 3
 theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 3
 
-[node name="DirectionSelector" type="GridContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer"]
+[node name="DirectionSelector" type="GridContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 columns = 3
 script = ExtResource("8_gd61k")
 
-[node name="NWSpacer" type="Control" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector"]
+[node name="NWSpacer" type="Control" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="UpButton" type="Button" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector"]
+[node name="UpButton" type="Button" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector"]
 layout_mode = 2
 focus_mode = 0
 icon = ExtResource("8_buyoq")
 icon_alignment = 1
 
-[node name="NESpacer" type="Control" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector"]
+[node name="NESpacer" type="Control" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="LeftButton" type="Button" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector"]
+[node name="LeftButton" type="Button" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector"]
 layout_mode = 2
 focus_mode = 0
 icon = ExtResource("9_gd61k")
 icon_alignment = 1
 
-[node name="MiddleSpacer" type="Control" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector"]
+[node name="MiddleSpacer" type="Control" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="RightButton" type="Button" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector"]
+[node name="RightButton" type="Button" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector"]
 layout_mode = 2
 focus_mode = 0
 icon = ExtResource("10_3syfw")
 icon_alignment = 1
 
-[node name="SWSpacer" type="Control" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector"]
+[node name="SWSpacer" type="Control" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="DownButton" type="Button" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector"]
+[node name="DownButton" type="Button" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector"]
 layout_mode = 2
 focus_mode = 0
 icon = ExtResource("11_u8ull")
 icon_alignment = 1
 
-[node name="SESpacer" type="Control" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector"]
+[node name="SESpacer" type="Control" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control"]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -3992,47 +3996,47 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer"]
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TabContainer" type="TabContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PanelContainer2"]
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PanelContainer2"]
 layout_mode = 2
 current_tab = 0
 tab_focus_mode = 0
 
-[node name="LPC Layer" type="ScrollContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PanelContainer2/TabContainer"]
+[node name="LPC Layer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PanelContainer2/TabContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_y0lof")
 metadata/_tab_index = 0
 
-[node name="LPCLayerContainer" type="VBoxContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PanelContainer2/TabContainer/LPC Layer"]
+[node name="LPCLayerContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PanelContainer2/TabContainer/LPC Layer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("17_y0lof")
 
-[node name="SATF Layer" type="ScrollContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PanelContainer2/TabContainer"]
+[node name="SATF Layer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PanelContainer2/TabContainer"]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
 metadata/_tab_index = 1
 
-[node name="LayerContainer" type="VBoxContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PanelContainer2/TabContainer/SATF Layer"]
+[node name="LayerContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PanelContainer2/TabContainer/SATF Layer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("3_rdsxb")
 
-[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer2"]
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 
-[node name="FrameTimeline" type="MarginContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer2/PanelContainer2"]
+[node name="FrameTimeline" type="MarginContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/PanelContainer2"]
 layout_mode = 2
 
-[node name="FrameContainer" type="HBoxContainer" parent="HBoxContainer/HSplitContainer/VBoxContainer2/PanelContainer2/FrameTimeline"]
+[node name="FrameContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/PanelContainer2/FrameTimeline"]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("4_yheby")
@@ -4042,21 +4046,21 @@ visible = false
 texture_filter = 1
 material = SubResource("ShaderMaterial_k5yu5")
 position = Vector2(1113, 600)
-texture = ExtResource("14_u8ull")
 hframes = 8
 vframes = 4
 region_rect = Rect2(0, 0, 64, 64)
 
-[connection signal="item_selected" from="HBoxContainer/HSplitContainer/VBoxContainer/BodyTypes" to="." method="_on_bodytypes_button_item_selected"]
-[connection signal="item_selected" from="HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/SheetDefinitionTree" to="." method="_on_sheet_definition_tree_item_selected"]
-[connection signal="item_selected" from="HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer/HBoxContainer/PaletteOption" to="." method="_on_palette_option_item_selected"]
-[connection signal="value_changed" from="HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer/HBoxContainer/VariantScaleControl/VBoxContainer/VariantPreviewScaleSlider" to="HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer/HBoxContainer/VariantScaleControl" method="_on_variant_preview_scale_slider_value_changed"]
-[connection signal="pressed" from="HBoxContainer/HSplitContainer/VBoxContainer/HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/HSplitContainer/VBoxContainer/HBoxContainer/RandomButton" to="." method="_on_random_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/HSplitContainer/VBoxContainer/HBoxContainer/VariantButton" to="." method="_on_variant_button_pressed"]
-[connection signal="item_selected" from="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/VBoxContainer/AnimationSelector" to="." method="_on_animation_selector_item_selected"]
-[connection signal="direction_pressed" from="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" to="." method="_on_direction_selector_direction_pressed"]
-[connection signal="pressed" from="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector/UpButton" to="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" method="_on_up_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector/LeftButton" to="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" method="_on_left_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector/RightButton" to="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" method="_on_right_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector/DownButton" to="HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" method="_on_down_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainButtonContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainButtonContainer/RandomButton" to="." method="_on_random_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainButtonContainer/VariantButton" to="." method="_on_variant_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainButtonContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer/BodyTypes" to="." method="_on_bodytypes_button_item_selected"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/SheetDefinitionTree" to="." method="_on_sheet_definition_tree_item_selected"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer/HBoxContainer/PaletteOption" to="." method="_on_palette_option_item_selected"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer/HBoxContainer/VariantScaleControl/VBoxContainer/VariantPreviewScaleSlider" to="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer/HBoxContainer/VariantScaleControl" method="_on_variant_preview_scale_slider_value_changed"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/VBoxContainer/AnimationSelector" to="." method="_on_animation_selector_item_selected"]
+[connection signal="direction_pressed" from="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" to="." method="_on_direction_selector_direction_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector/UpButton" to="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" method="_on_up_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector/LeftButton" to="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" method="_on_left_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector/RightButton" to="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" method="_on_right_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector/DownButton" to="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" method="_on_down_button_pressed"]

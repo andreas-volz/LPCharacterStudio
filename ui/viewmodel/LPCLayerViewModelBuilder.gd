@@ -7,6 +7,9 @@ static func build(sheet_collection: SheetCollection, lpc_satf_layer_trace_map: L
 	for sheet: SheetReference in sheet_collection.get_sheets():
 		var lpc_layer_view_model := LPCLayerViewModel.new()
 		var grid_layer_data_array: Array[GridLayerData] = lpc_satf_layer_trace_map.sheet_reference_to_grid_layer_data_array[sheet]
+		if grid_layer_data_array.is_empty():
+			# if there's no layers move on
+			continue
 		var grid_layer_data_front: GridLayerData = grid_layer_data_array.front()
 		
 		lpc_layer_view_model.type_name = sheet.type_name

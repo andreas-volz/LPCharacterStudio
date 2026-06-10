@@ -1,6 +1,8 @@
 class_name Studio
 extends Control
 
+const SETTINGS_WINDOW = preload("uid://r81wbda1t1oc")
+
 var lpc_sheet_definitions_list: Array = []
 
 var lpc_direction := DirectionSelector.ButtonDirection.DOWN
@@ -33,14 +35,13 @@ func _ready() -> void:
 	ApplicationContext.init_service()
 		
 	# TODO: init should be done only if no config found or if messed up to not overwrite user settings
-	_init_default_lpc_path()
+	#_init_default_lpc_path()
 	satf_animation_preview.graphic_root_path = ApplicationContext.lpc_loader_service.get_spritesheets_path()
 	
 	ApplicationContext.reset_active_sheet_collection()
 	
 	fill_animation_selector()
 	#configure_directions() # FIXME
-	
 	
 	# TODO rework the frame change signaling
 	satf_animation_preview.animation_frame_changed.connect(_satf_animation_preview_frame_changed)
@@ -61,6 +62,8 @@ func _ready() -> void:
 	update_lpc_layer_view()
 		
 	#ResourceSaver.save(satf_sprite_resource, "res://resources/satf_sprite.tres")
+
+
 
 func _init_default_lpc_path():
 	#var lpc_path := "user://ULPC"
@@ -380,7 +383,23 @@ func _on_variant_scale_control_request_variant_scale(variant_scale: float) -> vo
 
 func _on_apply_sheet_collection_intent():
 	create_collection_from_active()
-	
 	update_main_preview()
-	
 	update_lpc_layer_view()
+
+
+func _on_settings_button_pressed() -> void:
+	var settings_window: SettingsWindow = SETTINGS_WINDOW.instantiate()
+	add_child(settings_window)
+	settings_window.update_settings.connect(func():
+		# TODO: the reinit "concept" is a complete mess!
+		ApplicationContext.init_service()
+		#ApplicationContext.reset_active_sheet_collection()
+		var sheet_category_tree_model := ApplicationContext.lpc_repository.get_sheet_category_tree_model(ApplicationContext.body_type)
+		fill_category_tree(sheet_category_tree_model)
+		fill_animation_selector()
+		create_collection_from_active()
+		update_main_preview()
+		update_lpc_layer_view()
+		play_lcp_animation()
+	)
+	settings_window.popup_centered()

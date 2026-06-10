@@ -1,0 +1,112 @@
+[gd_scene load_steps=3 format=3 uid="uid://r81wbda1t1oc"]
+
+[ext_resource type="Script" uid="uid://blrwv1k44ssni" path="res://ui/controls/SettingsWindow.gd" id="1_nxc2l"]
+[ext_resource type="Texture2D" uid="uid://d3asei74nuaia" path="res://assets/ui/FileBrowse.svg" id="2_g7idc"]
+
+[node name="SettingsWindow" type="Window"]
+oversampling_override = 1.0
+title = "Settings"
+initial_position = 2
+size = Vector2i(500, 300)
+exclusive = true
+script = ExtResource("1_nxc2l")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="ULPC Configuration" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TabContainer/ULPC Configuration"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/TabContainer/ULPC Configuration/MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/ULPC Configuration/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Sheet Definitions Path"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/ULPC Configuration/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SheetDefinitionsPathLineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/TabContainer/ULPC Configuration/MarginContainer/GridContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SheetDefinitionsFolderSelectButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/ULPC Configuration/MarginContainer/GridContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("2_g7idc")
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/ULPC Configuration/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Spritesheets Path"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/ULPC Configuration/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpritesheetsPathLineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/TabContainer/ULPC Configuration/MarginContainer/GridContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpritesheetsFolderSelectButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/ULPC Configuration/MarginContainer/GridContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("2_g7idc")
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/ULPC Configuration/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Palette Definitions Path"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/ULPC Configuration/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PaletteDefinitionsPathLineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/TabContainer/ULPC Configuration/MarginContainer/GridContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PaletteDefinitionsFolderSelectButton" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/ULPC Configuration/MarginContainer/GridContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("2_g7idc")
+
+[node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Close"
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
