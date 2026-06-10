@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwcsbhhmcvivy"]
+
+[ext_resource type="Script" uid="uid://c41kfy1xxihs3" path="res://ui/controls/FrameControl.gd" id="1_txr1s"]
+[ext_resource type="Shader" uid="uid://bsqaqtky71cky" path="res://shader/checkerboard.gdshader" id="2_8xlfh"]
+[ext_resource type="Texture2D" uid="uid://dt7nceg5xval" path="res://assets/ui/1x1.png" id="4_epfq4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8xlfh"]
+shader = ExtResource("2_8xlfh")
+shader_parameter/size = 10.0000004275
+shader_parameter/color1 = Color(0.48642266, 0.48642266, 0.48642266, 1)
+shader_parameter/color2 = Color(0.32349485, 0.32349485, 0.32349485, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ishws"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.47267008, 1, 1)
+
+[node name="FrameControl" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+script = ExtResource("1_txr1s")
+metadata/_custom_type_script = "uid://brgxldj2hi00u"
+
+[node name="CheckerBoard" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_8xlfh")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_epfq4")
+
+[node name="FrameSelect" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ishws")

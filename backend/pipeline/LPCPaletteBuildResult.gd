@@ -1,0 +1,5 @@
+class_name LPCPaletteBuildResult
+extends RefCounted
+
+var palette_binding: Array[PaletteBinding]
+var lpc_satf_palette_trace_map: LPCSATFPaletteTraceMap

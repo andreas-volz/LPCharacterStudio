@@ -1,0 +1,49 @@
+@startuml
+
+<style>
+'element {MinimumWidth 100}
+</style>
+
+title SATF Grid Import Architecture
+
+split
+partition Animation Specification #lightblue {
+   -[hidden]->
+   :JsonVFS\n(Hand-Written Spec);
+   :GridSpecData\n(has GridSpecAnimation);
+
+}
+split again
+partition Layer Composition #lightgreen {
+   -[hidden]->
+    split
+        -[hidden]->
+        :JsonVFS\n(ULPC Asset Data);
+    split again
+        -[hidden]->
+        :Generate\n(LPCharacterStudio);
+        :JsonVFS\n(Layer);
+    end split
+   :GridLayerData\n(has GridLayerAnimation);
+   :GridLayerCollection\n(has Array[GridLayerData];
+    note right: Build by\n""LPCGridLayerCollectionBuilder""\nwith ""SheetCollection""
+}
+end split
+
+- GridSpriteComposition\n(data aggregate)
+
+- GridSpriteStrategy\n(mapping / resolution)
+note right: Uses ""GridResolverContext""\nand LPC Resolver variants
+
+partition SATF Runtime #pink {
+
+- SATFSpriteResource
+
+- SATFSprite
+
+- SATF Engine Addon
+
+}
+
+@enduml
+

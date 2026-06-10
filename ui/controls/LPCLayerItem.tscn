@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0syxgvi4h8hw"]
+
+[ext_resource type="Script" uid="uid://dk8guc0stgc1s" path="res://ui/controls/LPCLayerItem.gd" id="1_cofx8"]
+[ext_resource type="Texture2D" uid="uid://d0uhl60wpxf43" path="res://assets/ui/GuiVisibilityVisible.svg" id="2_jyjm2"]
+[ext_resource type="Script" uid="uid://brgxldj2hi00u" path="res://addons/SATF/ui/SATFSpriteControl.gd" id="2_nmdwh"]
+[ext_resource type="Texture2D" uid="uid://c7xwbf77t86q4" path="res://assets/ui/GuiVisibilityHidden.svg" id="3_nmdwh"]
+[ext_resource type="Texture2D" uid="uid://be1g0160wydto" path="res://assets/ui/Remove.svg" id="4_y6sw6"]
+
+[sub_resource type="FontVariation" id="FontVariation_uw4ru"]
+variation_embolden = 0.8
+
+[node name="LPCLayerItem" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_cofx8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TypeNameLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_uw4ru")
+text = "[type_name]"
+
+[node name="NameLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "name"
+
+[node name="LayerPaletteContainer" type="VBoxContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="LayerPreview" type="Control" parent="HBoxContainer" node_paths=PackedStringArray("satf_sprite")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_nmdwh")
+satf_sprite = NodePath("@Node2D@21053")
+metadata/_custom_type_script = "uid://brgxldj2hi00u"
+
+[node name="VisibleButton" type="TextureButton" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource("2_jyjm2")
+texture_pressed = ExtResource("3_nmdwh")
+
+[node name="RemoveButton" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("4_y6sw6")
+
+[connection signal="toggled" from="HBoxContainer/VisibleButton" to="." method="_on_visible_button_toggled"]
+[connection signal="pressed" from="HBoxContainer/RemoveButton" to="." method="_on_remove_button_pressed"]

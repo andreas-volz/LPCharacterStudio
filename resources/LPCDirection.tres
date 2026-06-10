@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="SATFDirectionMapping" load_steps=7 format=3 uid="uid://b7trlajkcfbtk"]
+
+[ext_resource type="Script" uid="uid://j5wrr6h5q2ev" path="res://addons/SATF/runtime/sprite/resource/SATFDirectionMapping.gd" id="1_gexf1"]
+[ext_resource type="Script" uid="uid://behts6ut6dqab" path="res://addons/SATF/runtime/sprite/resource/SATFDirection.gd" id="1_yaovg"]
+
+[sub_resource type="Resource" id="Resource_sv6wa"]
+script = ExtResource("1_yaovg")
+name = &"up"
+vector = Vector2i(0, -1)
+metadata/_custom_type_script = "uid://behts6ut6dqab"
+
+[sub_resource type="Resource" id="Resource_422l0"]
+script = ExtResource("1_yaovg")
+name = &"left"
+vector = Vector2i(-1, 0)
+metadata/_custom_type_script = "uid://behts6ut6dqab"
+
+[sub_resource type="Resource" id="Resource_hdf8f"]
+script = ExtResource("1_yaovg")
+name = &"down"
+vector = Vector2i(0, 1)
+metadata/_custom_type_script = "uid://behts6ut6dqab"
+
+[sub_resource type="Resource" id="Resource_g02eu"]
+script = ExtResource("1_yaovg")
+name = &"right"
+vector = Vector2i(1, 0)
+metadata/_custom_type_script = "uid://behts6ut6dqab"
+
+[resource]
+script = ExtResource("1_gexf1")
+direction_mapping = Array[ExtResource("1_yaovg")]([SubResource("Resource_sv6wa"), SubResource("Resource_422l0"), SubResource("Resource_hdf8f"), SubResource("Resource_g02eu")])

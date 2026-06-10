@@ -1,0 +1,345 @@
+{
+	"fps": 8.0,
+	"sprite_size": {
+		"x": 64,
+		"y": 64
+	},
+	"origin": {
+		"x": 0,
+		"y": 0
+	},
+	"animations": {
+		"spellcast": {
+			"frames": [0, 1, 2, 3, 4, 5, 6],
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"thrust": {
+			"frames": [0, 1, 2, 3, 4, 5, 6, 7],
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"walk": {
+			"frames": [1, 2, 3, 4, 5, 6, 7, 8],
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"slash": {
+			"frames": [0, 1, 2, 3, 4, 5],
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"shoot": {
+			"frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"hurt": {
+			"frames": [0, 1, 2, 3, 4, 5],
+            "directions": {
+                "down":  {"row": 0}
+            }
+		},
+		"watering": {
+			"frames": [0, 1, 4, 4, 4, 4, 5],
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"idle": {
+			"frames": [0, 0, 1],
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"jump": {
+			"frames": [0, 1, 2, 3, 4, 1],
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"run": {
+			"frames": [0, 1, 2, 3, 4, 5, 6, 7],
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"sit": {
+			"frames": [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2],
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"emote": {
+			"frames": [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2],
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"climb": {
+			"frames": [0, 1, 2, 3, 4, 5],
+            "directions": {
+                "up":    {"row": 0}
+            }
+		},
+		"combat": {
+			"frames": [0, 0, 1],
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"1h_slash": {
+			"frames": [0, 1, 2, 3, 4, 5, 6],
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"1h_backslash": {
+			"frames": [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12],
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"1h_halfslash": {
+			"frames": [0, 1, 2, 3, 4, 5],
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"slash": {
+			"frames": [0, 1, 2, 3, 4, 5],
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"backslash": {
+			"frames": [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12],
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"halfslash": {
+			"frames": [0, 1, 2, 3, 4, 5],
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"wheelchair": {
+            "inherits_from": "sit",
+            "frame_mode": "linear",
+            "frames": [2, 2],
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"tool_rod": {
+            "inherits_from": "thrust",
+            "frame_mode": "linear",
+            "frames": [0,1,2,3,4,5,4,4,4,5,4,2,3],
+			"sprite_size": {
+				"x": 128,
+				"y": 128
+			},
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"slash_128": {
+            "inherits_from": "slash",
+			"sprite_size": {
+				"x": 128,
+				"y": 128
+			},
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"backslash_128": {
+            "inherits_from": "backslash",
+			"sprite_size": {
+				"x": 128,
+				"y": 128
+			},
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"halfslash_128": {
+            "inherits_from": "halfslash",
+			"sprite_size": {
+				"x": 128,
+				"y": 128
+			},
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"thrust_oversize": {
+            "inherits_from": "thrust",
+			"sprite_size": {
+				"x": 192,
+				"y": 192
+			},
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"slash_oversize": {
+            "inherits_from": "slash",
+			"sprite_size": {
+				"x": 192,
+				"y": 192
+			},
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"walk_128": {
+            "inherits_from": "walk",
+			"sprite_size": {
+				"x": 128,
+				"y": 128
+			},
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"thrust_128": {
+            "inherits_from": "thrust",
+			"sprite_size": {
+				"x": 128,
+				"y": 128
+			},
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+		},
+		"slash_reverse_oversize": {
+            "inherits_from": "slash",
+            "frame_mode": "linear",
+            "frames": [5,4,3,2,1,0],
+			"sprite_size": {
+				"x": 192,
+				"y": 192
+			},
+            "directions": {
+                "up":    {"row": 0},
+                "left":  {"row": 1},
+                "down":  {"row": 2},
+                "right": {"row": 3}
+            }
+        },
+		"tool_whip": {
+            "inherits_from": "slash",
+            "frame_mode": "linear",
+			"sprite_size": {
+				"x": 192,
+				"y": 192
+			},
+            "directions": {
+                "up": {
+                    "row": 0,
+                    "frames": [0,1,4,5,3,2,2,1]
+                 },
+                "left": {
+                    "row": 1,
+                    "frames": [0,1,5,4,3,3,3,2]
+                 },
+                "down": {
+                    "row": 2,
+                    "frames": [0,1,5,4,3,3,2,1]
+                 }, 
+                "right": {
+                    "row": 3,
+                    "frames": [0,1,5,4,3,3,3,2]
+                 }
+            }
+		},
+	}
+}

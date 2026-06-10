@@ -1,0 +1,5 @@
+class_name LPCGridLayerCollectionBuildResult
+extends RefCounted
+
+var grid_layer_collection: GridLayerCollection
+var lpc_satf_layer_collection_trace_map: LPCSATFLayerCollectionTraceMap

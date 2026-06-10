@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsmikhx2smbl8"]
+
+[ext_resource type="Script" uid="uid://bkxachm1xvtk5" path="res://ui/controls/PaletteDisplay.gd" id="1_fhoj5"]
+[ext_resource type="Script" uid="uid://cfhtkmy2cspew" path="res://ui/controls/VariantContainer.gd" id="1_u8oqb"]
+[ext_resource type="PackedScene" uid="uid://xkdea1vhw1lt" path="res://ui/controls/VariantControl.tscn" id="2_4o8ap"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_khe44"]
+bg_color = Color(0.7511804, 0.7511804, 0.7511804, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_bottom_right = 5
+shadow_size = 2
+
+[node name="VariantContainer" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_khe44")
+script = ExtResource("1_u8oqb")
+
+[node name="Container" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VariantControl" parent="Container" instance=ExtResource("2_4o8ap")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+
+[node name="PaletteDisplay" type="Control" parent="Container"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+script = ExtResource("1_fhoj5")
+metadata/_custom_type_script = "uid://bkxachm1xvtk5"

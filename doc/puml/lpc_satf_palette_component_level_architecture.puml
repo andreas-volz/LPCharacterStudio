@@ -1,0 +1,54 @@
+@startuml
+
+skinparam linetype ortho
+skinparam shadowing true
+
+left to right direction
+
+title LPC SATF Palette Component-Level Architecture
+
+rectangle "ULPC Data" as ULPCData #lightgray {
+    rectangle "Assets" as ULPCAssets #lightblue {
+      component [Recolor Compatibility] as RecolorData
+    }
+
+    rectangle "Palettes" as ULPCPlaettes #yellow {
+      component [Material/Domain/Color\nInformation] as MaterialDomain
+    }
+}
+
+rectangle "LPCS Model" as LPCSModel #pink {
+    component [Patette Repository/Catalog] as PaletteRepo
+    component [Asset Palette Information] as LPCDataModel
+}
+
+rectangle "SATF" as SATF #lightgray {
+
+    rectangle "SATF Model" as SATFModel #red {
+        component [Normalized Palette Binding] as SATFPaletteNorm
+    }
+
+    rectangle "SATF Runtime" as SATFRuntime #orange {
+        component [Color replacement mapping] as ColorMapping
+        component [Color replacement shader] as ColorShader
+    }
+
+}
+
+component [Palette System Builder] as PaletteSysBuilder
+
+' connections
+ULPCData -> LPCSModel
+LPCSModel --> PaletteSysBuilder
+PaletteSysBuilder --> SATFModel
+SATFModel -> SATFRuntime
+RecolorData -> MaterialDomain
+ColorMapping -> ColorShader
+
+
+' notes
+'note left of FreeRectSprites
+' ➩ Not yet implemented!
+'end note
+
+@enduml

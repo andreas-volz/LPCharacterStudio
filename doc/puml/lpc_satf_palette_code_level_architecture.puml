@@ -1,0 +1,49 @@
+@startuml
+
+skinparam linetype ortho
+skinparam shadowing true
+
+
+left to right direction
+
+title LPC SATF Palette Code-Level Architecture
+
+rectangle "LPCS Model" as LPCSModel #pink {
+    component [LPCPaletteCatalog] as LPCPaletteCatalog
+    component [LPCPaletteCollectionTarget] as LPCPaletteCollectionTarget
+    component [LPCPaletteDomain] as LPCPaletteDomain
+    component [LPCPaletteCollection] as LPCPaletteCollection
+    component [LPCPaletteCompatibility] as LPCPaletteCompatibility
+    component [LPCPaletteSelection] as LPCPaletteSelection
+}
+
+component [SheetReference] as SheetReference
+
+rectangle "Builder" as Builder #yellow {
+    component [LPCPaletteBuilder] as LPCPaletteBuilder.gd
+    component [LPCPaletteCatalogBuilder] as LPCPaletteCatalogBuilder
+}
+
+rectangle "ULPC Json Access" as ULPCJsonAccess #lightgreen {
+    component [LPCAssetRepository] as LPCAssetRepository
+    component [LPCPaletteRepository] as LPCPaletteRepository
+}
+
+rectangle "SATF Model" as SATFModel #blue {
+    component [PaletteBinding] as PaletteBinding
+    component [PaletteVariant] as PaletteVariant
+}
+
+rectangle "SATF Runtime" as SATFRuntime #green {
+    component [SATFRecolor] as SATFRecolor
+}
+
+' connections
+
+
+
+'note on link
+'  creates via BuilderA
+'end note
+
+@enduml

@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cfu7aqbqihwgx"]
+
+[ext_resource type="Shader" uid="uid://bsqaqtky71cky" path="res://shader/checkerboard.gdshader" id="1_fseqq"]
+
+[resource]
+shader = ExtResource("1_fseqq")
+shader_parameter/size = 50.0000023275
+shader_parameter/color1 = Color(0.6900825, 0.6900825, 0.6900825, 1)
+shader_parameter/color2 = Color(0.4660567, 0.4660567, 0.4660567, 1)

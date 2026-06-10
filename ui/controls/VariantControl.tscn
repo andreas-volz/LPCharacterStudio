@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://xkdea1vhw1lt"]
+
+[ext_resource type="Script" uid="uid://dngbe6dxnjfxs" path="res://ui/controls/VariantControl.gd" id="1_u00s5"]
+
+[node name="VariantControl" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_u00s5")
+size_source = 1
+metadata/_custom_type_script = "uid://brgxldj2hi00u"

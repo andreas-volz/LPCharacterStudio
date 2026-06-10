@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2kuysw5foire"]
+
+[ext_resource type="Texture2D" uid="uid://d0uhl60wpxf43" path="res://assets/ui/GuiVisibilityVisible.svg" id="1_f7yox"]
+[ext_resource type="Script" uid="uid://b4baxrlpyam2g" path="res://ui/controls/LayerItem.gd" id="1_kde2m"]
+[ext_resource type="Texture2D" uid="uid://c7xwbf77t86q4" path="res://assets/ui/GuiVisibilityHidden.svg" id="2_uw4ru"]
+
+[sub_resource type="FontVariation" id="FontVariation_uw4ru"]
+variation_embolden = 0.86
+
+[node name="LayerItem" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_kde2m")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_uw4ru")
+theme_override_font_sizes/font_size = 13
+text = "[name]"
+
+[node name="PathLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "path"
+
+[node name="ZIndexLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Z-Index"
+
+[node name="VisibleButton" type="TextureButton" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("1_f7yox")
+texture_pressed = ExtResource("2_uw4ru")
+
+[connection signal="button_down" from="HBoxContainer/VisibleButton" to="." method="_on_visible_button_button_down"]
+[connection signal="button_up" from="HBoxContainer/VisibleButton" to="." method="_on_visible_button_button_up"]

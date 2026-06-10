@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://55qyur5qalsr"]
+
+[ext_resource type="Script" uid="uid://8fx7ni0e73f6" path="res://ui/controls/LayerPaletteItem.gd" id="1_n6jit"]
+[ext_resource type="Script" uid="uid://bkxachm1xvtk5" path="res://ui/controls/PaletteDisplay.gd" id="1_nusb8"]
+[ext_resource type="Texture2D" uid="uid://cireglk255bih" path="res://assets/ui/NonFavorite.svg" id="2_fhbdb"]
+[ext_resource type="Texture2D" uid="uid://bcu21chcyirjn" path="res://assets/ui/Favorites.svg" id="3_n6jit"]
+
+[node name="LayerPaletteItem" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_n6jit")
+
+[node name="PaletteName" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "palette"
+
+[node name="PaletteDisplay" type="Control" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 15)
+layout_mode = 2
+script = ExtResource("1_nusb8")
+metadata/_custom_type_script = "uid://bkxachm1xvtk5"
+
+[node name="PushStarButton" type="TextureButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource("2_fhbdb")
+texture_pressed = ExtResource("3_n6jit")

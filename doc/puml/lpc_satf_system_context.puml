@@ -1,0 +1,61 @@
+@startuml
+
+skinparam linetype ortho
+skinparam shadowing true
+
+left to right direction
+
+title LPC SATF System Context
+
+rectangle "Universal LPC Asset Repository" as ULPCAssetRepo #lightgray {
+  component [Spritesheet] as ULPCSpriteSheet
+  component [Definition] as ULPCDefiniton
+  component [Palette] as ULPCPalette
+}
+
+rectangle "LPCharacterStudio" as LPCStudio #lightblue {
+  component [Layer Composition] as LPCLayerComposition
+  component [LPC Format Specification] as LPCFormatSpec
+}
+
+rectangle "User" as User #lightgreen {
+  :Pixel Artist: as PixelArtist
+  :Asset Composer: as AssetComposer
+  :Gamer Developer: as GameDev
+}
+
+rectangle "SATF Godot Addon - Editor" as SATFGodot #pink {
+  component [Domain Model] as SATFModel
+  component [Resource] as SATFResource
+}
+
+rectangle "Game" as Game #orange {
+  component [SATF Godot Addon - Runtime] as SATFRuntime
+  component [Character Integration] as CharacterIntegration
+}
+
+' connections
+AssetComposer --> LPCLayerComposition
+PixelArtist -> ULPCAssetRepo
+ULPCAssetRepo -> LPCStudio
+LPCLayerComposition -> SATFModel
+SATFModel -> SATFResource
+SATFResource --> SATFRuntime
+SATFRuntime -> CharacterIntegration
+GameDev -> Game
+
+' notes
+note right of LPCStudio
+➩ Live Preview
+➩ Asset Browser
+➩ Export/Import
+end note
+
+note right of Game
+➩ Plug-in integration
+➩ AnimationPlayer control
+➩ AnimationTree control
+end note
+
+
+@enduml

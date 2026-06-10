@@ -1,0 +1,4 @@
+class_name ApplySheetCollectionIntent
+extends Intent
+
+var sheet_collection: SheetCollection
