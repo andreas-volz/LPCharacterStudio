@@ -261,12 +261,10 @@ func configure_directions():
 	else:
 		direction_selector.enable_button(DirectionSelector.ButtonDirection.RIGHT, false)
 
-# TODO: ich muss irgendwie nicht nur das eine recolor auswerte, sondern das ganze Array,
-# weil sonst gehen Körperteile beim body color matchen verloren
 func load_palette_variants_preview(sheet_path: String, recolor_array: Array[LPCPaletteCompatibility], recolor_filter: String, recolor: LPCPaletteCompatibility, match_body_color: bool):
 	var asset_reference := AssetReference.new(sheet_path)
 	var type_name: String = ApplicationContext.lpc_repository.get_type_name(sheet_path)
-	print("recolor_filter: ", recolor_filter)
+	#print("recolor_filter: ", recolor_filter)
 		
 	# TODO: move this code to LPCBlueprintBuilder or something similar
 	
@@ -360,11 +358,6 @@ func load_active_sheet_collection(path: String):
 func _on_direction_selector_direction_pressed(direction: DirectionSelector.ButtonDirection) -> void:
 	lpc_direction = direction
 	play_lcp_animation()
-	
-func _on_anim_preview_direction_property_changed() -> void:
-	#print(anim_preview.get_directions())
-	#configure_directions()
-	pass
 
 func _on_random_button_pressed() -> void:
 	var type_name_array := ["hat", "hair", "legs", "vest"]
