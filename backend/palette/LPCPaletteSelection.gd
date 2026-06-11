@@ -50,12 +50,37 @@ func clone() -> LPCPaletteSelection:
 	new_selection.palette_resolve_rule = palette_resolve_rule
 	return new_selection
 
+func from_dict(dict: Dictionary) -> bool:
+	var result: bool = true
+	
+	if dict.has("material_domain"):
+		material_domain = dict["material_domain"]
+	else:
+		push_warning("no 'material_domain' in Dictionary")
+		result = false
+		
+	if dict.has("target_collection"):
+		var target_collection_dict = dict["target_collection"]
+		if target_collection_dict is Dictionary:
+			target_collection.from_dict(target_collection_dict)
+		
+	if dict.has("variant"):
+		variant = dict["variant"]
+	else:
+		push_warning("no 'variant' in Dictionary")
+		result = false
+
+	# TODO palette_resolve_rule
+
+	return result
+
 func to_dict() -> Dictionary:
 	var dict := {}
 	
 	dict["material_domain"] = material_domain
 	dict["target_collection"] = target_collection.to_dict()
 	dict["variant"] = variant
-	# TODO palette_resolve_rule?
+	
+	# TODO palette_resolve_rule
 	
 	return dict

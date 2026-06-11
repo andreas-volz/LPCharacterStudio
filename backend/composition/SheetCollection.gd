@@ -78,6 +78,8 @@ func clone() -> SheetCollection:
 ## Returns false immediately if a critical error occurs.
 ## Invalid references are skipped with a warning.
 func from_dict(data: Dictionary) -> bool:
+	var result: bool = true
+	
 	for key in data.keys():
 		var entry = data[key]
 		
@@ -85,25 +87,21 @@ func from_dict(data: Dictionary) -> bool:
 			push_error("Entry for key '%s' is not a Dictionary" % key)
 			return false
 		
-		if not entry.has("path") or not entry.has("variant"):
-			push_error("Entry for key '%s' must have 'path' and 'variant'" % key)
-			return false
-		
-		var ref = SheetReference.new(key, entry["path"], entry["variant"])
+		var ref := SheetReference.new()
+		ref.from_dict(entry)
 		if not ref.is_valid():
 			push_warning("Ignoring invalid SheetReference for key '%s'" % key)
 			continue  # skip invalid entry without breaking completely
 		
 		_entries[key] = ref
 	
-	return true
+	return result
 
 ## Serializes the SheetCollection to a Dictionary.
 ## The returned Dictionary can be used for saving or exporting
-# TODO: this needs rework!
 func to_dict() -> Dictionary:
 	var dict = {}
 	for k in _entries.keys():
-		var ref = _entries[k]
-		dict[k] = {"path": ref.path, "variant": ref.variant}
+		var ref: SheetReference = _entries[k]
+		dict[k] = ref.to_dict()
 	return dict

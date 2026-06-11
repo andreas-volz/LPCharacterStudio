@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SATFDirectionMapping" load_steps=7 format=3 uid="uid://b7trlajkcfbtk"]
+[gd_resource type="Resource" script_class="SATFDirectionMapping" format=3 uid="uid://b7trlajkcfbtk"]
 
 [ext_resource type="Script" uid="uid://j5wrr6h5q2ev" path="res://addons/SATF/runtime/sprite/resource/SATFDirectionMapping.gd" id="1_gexf1"]
 [ext_resource type="Script" uid="uid://behts6ut6dqab" path="res://addons/SATF/runtime/sprite/resource/SATFDirection.gd" id="1_yaovg"]

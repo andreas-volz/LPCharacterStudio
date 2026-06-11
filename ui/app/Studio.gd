@@ -312,8 +312,51 @@ func load_palette_variants_preview(sheet_path: String, recolor_array: Array[LPCP
 
 			variant_list.add_preview(asset_variant_view_model)
 			
+func open_sheet_collection_saver():
+	var dialog := FileDialog.new()
+	dialog.file_mode = FileDialog.FILE_MODE_SAVE_FILE
+	dialog.access = FileDialog.ACCESS_FILESYSTEM
+	dialog.filters = PackedStringArray(["*.json"])
+	dialog.filename_filter = "*.json"
+	dialog.title = "Save..."
+
+	dialog.canceled.connect(dialog.queue_free)
+	dialog.file_selected.connect(func(path: String):
+		save_active_sheet_collection(path)
+		dialog.queue_free()
+	)
+
+	add_child(dialog)
+	dialog.popup_centered(Vector2i(500, 500))
 	
+func open_sheet_collection_loader():
+	var dialog := FileDialog.new()
+	dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
+	dialog.access = FileDialog.ACCESS_FILESYSTEM
+	dialog.filters = PackedStringArray(["*.json"])
+	dialog.filename_filter = "*.json"
+	dialog.title = "Load..."
+
+	dialog.canceled.connect(dialog.queue_free)
+	dialog.file_selected.connect(func(path: String):
+		load_active_sheet_collection(path)
+		dialog.queue_free()
+	)
+
+	add_child(dialog)
+	dialog.popup_centered(Vector2i(500, 500))
 		
+func save_active_sheet_collection(path: String):
+	var save_dict := ApplicationContext.sheet_collection_active.to_dict()
+	JsonVFS.json_to_file(save_dict, path)
+
+func load_active_sheet_collection(path: String):
+	var load_json: Dictionary = JsonVFS.json_from_file(path)
+	ApplicationContext.sheet_collection_active.from_dict(load_json)
+	create_collection_from_active()
+	update_main_preview()
+	update_lpc_layer_view()
+	
 func _on_direction_selector_direction_pressed(direction: DirectionSelector.ButtonDirection) -> void:
 	lpc_direction = direction
 	play_lcp_animation()
@@ -403,3 +446,12 @@ func _on_settings_button_pressed() -> void:
 		play_lcp_animation()
 	)
 	settings_window.popup_centered()
+
+
+func _on_load_button_pressed() -> void:
+	open_sheet_collection_loader()
+
+
+
+func _on_save_button_pressed() -> void:
+	open_sheet_collection_saver()

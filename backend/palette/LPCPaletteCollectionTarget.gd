@@ -25,6 +25,20 @@ func _init(domain_param: String = "", collection_param: String = ""):
 		material_domain.set_value(domain_param)
 	collection = collection_param
 	
+func from_dict(dict: Dictionary) -> bool:
+	var result: bool = true
+	
+	if dict.has("material_domain"):
+		material_domain.set_value(dict["base_path"])
+		
+	if dict.has("collection"):
+		collection = dict["collection"]
+	else:
+		push_warning("no 'collection' in Dictionary")
+		result =  false
+		
+	return result
+	
 func to_dict() -> Dictionary:
 	var dict := {}
 	if material_domain.has_value():

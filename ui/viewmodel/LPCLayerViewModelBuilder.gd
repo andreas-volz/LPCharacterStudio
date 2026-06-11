@@ -20,27 +20,29 @@ static func build(sheet_collection: SheetCollection, lpc_satf_layer_trace_map: L
 		if lpc_satf_layer_trace_map.sheet_reference_to_palette_trace_map_array.has(sheet):
 			var lpc_satf_palette_trace_map_array: Array[LPCSATFPaletteTraceMap] = lpc_satf_layer_trace_map.sheet_reference_to_palette_trace_map_array[sheet]
 			
-			# in this special case it's ok to access the front() object and use it for UI display
-			# in the LPC case all palette information from the SATF flattened layers are the same!
-			var lpc_satf_palette_trace_map: LPCSATFPaletteTraceMap = lpc_satf_palette_trace_map_array.front()
-			
-			# store all palette information in the view model
-			for palette_binding: PaletteBinding in grid_layer_data_front.palette_bindings:
+			# if the palette TraceMap is empty it is no palette asset
+			if not lpc_satf_palette_trace_map_array.is_empty():
+				# in this special case it's ok to access the front() object and use it for UI display
+				# in the LPC case all palette information from the SATF flattened layers are the same!
+				var lpc_satf_palette_trace_map: LPCSATFPaletteTraceMap = lpc_satf_palette_trace_map_array.front()
 				
-				#var palette_binding: PaletteBinding = lpc_satf_palette_trace_map.lpc_palette_selection_to_palette_binding[palette_selection]
-				var palette_selection: LPCPaletteSelection = lpc_satf_palette_trace_map.palette_binding_to_lpc_palette_selection[palette_binding]
-				var palette_info := LPCLayerViewModel.PaletteInfo.new()
-				palette_info.material_domain = palette_selection.material_domain
-			
-				for hex_color in palette_binding.target_palette.colors:
-					palette_info.palette_colors.append(Color(hex_color))
+				# store all palette information in the view model
+				for palette_binding: PaletteBinding in grid_layer_data_front.palette_bindings:
 					
-				# set the "push star" for all palettes with the PUSH info
-				if palette_selection.palette_resolve_rule == LPCPaletteSelection.PaletteResolveRule.PUSH:
-					palette_info.push_star = true
-					
-				lpc_layer_view_model.palette_info_array.append(palette_info)
+					#var palette_binding: PaletteBinding = lpc_satf_palette_trace_map.lpc_palette_selection_to_palette_binding[palette_selection]
+					var palette_selection: LPCPaletteSelection = lpc_satf_palette_trace_map.palette_binding_to_lpc_palette_selection[palette_binding]
+					var palette_info := LPCLayerViewModel.PaletteInfo.new()
+					palette_info.material_domain = palette_selection.material_domain
 				
+					for hex_color in palette_binding.target_palette.colors:
+						palette_info.palette_colors.append(Color(hex_color))
+						
+					# set the "push star" for all palettes with the PUSH info
+					if palette_selection.palette_resolve_rule == LPCPaletteSelection.PaletteResolveRule.PUSH:
+						palette_info.push_star = true
+						
+					lpc_layer_view_model.palette_info_array.append(palette_info)
+					
 		# store which layers should be visible to represent the layer icon
 		for grid_layer_data: GridLayerData in grid_layer_data_array:
 			var layer_index: int = ApplicationContext.main_grid_sprite_composition.grid_layer_collection.get_layer_index_from_id(grid_layer_data.layer_id.get_or())

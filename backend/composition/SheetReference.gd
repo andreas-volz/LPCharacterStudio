@@ -49,6 +49,33 @@ func is_valid() -> bool:
 	
 	return type_name != "" #and (asset_reference.variant.has_value() or not _palette_selections.is_empty())
 
+func from_dict(dict: Dictionary) -> bool:
+	var result: bool = true
+	
+	if dict.has("type_name"):
+		type_name = dict["type_name"]
+	else:
+		push_warning("no 'type_name' in Dictionary")
+		result =  false
+		
+	if dict.has("asset_reference"):
+		result = asset_reference.from_dict(dict["asset_reference"])
+	else:
+		push_warning("no 'asset_reference' in Dictionary")
+		result =  false
+		
+	if dict.has("palette_selections"):
+		var palette_selections = dict["palette_selections"]
+		if palette_selections is Array:
+			_palette_selections.clear()
+			for pal_dict in palette_selections:
+				if pal_dict is Dictionary:
+					var palette_selection := LPCPaletteSelection.new()
+					palette_selection.from_dict(pal_dict)
+					register_palette_selection(palette_selection)
+		
+	return result
+
 func to_dict() -> Dictionary:
 	var dict := {}
 	dict["type_name"] = type_name
