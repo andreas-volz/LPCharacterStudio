@@ -310,6 +310,51 @@ func load_palette_variants_preview(sheet_path: String, recolor_array: Array[LPCP
 
 			variant_list.add_preview(asset_variant_view_model)
 			
+func export_satf(path: String):
+	var satf_layer_dict: Dictionary = ApplicationContext.main_grid_sprite_composition.grid_layer_collection.to_dict()
+	JsonVFS.json_to_file(satf_layer_dict, path)
+	
+func export_satf_resource(path: String):
+	var satf_sprite_res: SATFSpriteResource = ApplicationContext.lpc_satf_resource_builder.generate_satf_resource(ApplicationContext.main_grid_sprite_composition)
+	ResourceSaver.save(satf_sprite_res, path)
+	
+	# TODO: this is an alternative export mode with packed texture data
+	# offer this as option
+	# ResourceSaver.save(satf_animation_preview.satf_sprite_resource, path)
+			
+func open_satf_resource_exporter():
+	var dialog := FileDialog.new()
+	dialog.file_mode = FileDialog.FILE_MODE_SAVE_FILE
+	dialog.access = FileDialog.ACCESS_FILESYSTEM
+	dialog.filters = PackedStringArray(["*.res", "*.tres"])
+	dialog.title = "Export SATF Resource..."
+
+	dialog.canceled.connect(dialog.queue_free)
+	dialog.file_selected.connect(func(path: String):
+		export_satf_resource(path)
+		dialog.queue_free()
+	)
+
+	add_child(dialog)
+	dialog.popup_centered(Vector2i(600, 600))
+			
+func open_satf_exporter():
+	var dialog := FileDialog.new()
+	dialog.file_mode = FileDialog.FILE_MODE_SAVE_FILE
+	dialog.access = FileDialog.ACCESS_FILESYSTEM
+	dialog.filters = PackedStringArray(["*.json"])
+	dialog.filename_filter = "*.json"
+	dialog.title = "Export SATF..."
+
+	dialog.canceled.connect(dialog.queue_free)
+	dialog.file_selected.connect(func(path: String):
+		export_satf(path)
+		dialog.queue_free()
+	)
+
+	add_child(dialog)
+	dialog.popup_centered(Vector2i(600, 600))
+			
 func open_sheet_collection_saver():
 	var dialog := FileDialog.new()
 	dialog.file_mode = FileDialog.FILE_MODE_SAVE_FILE
@@ -325,7 +370,7 @@ func open_sheet_collection_saver():
 	)
 
 	add_child(dialog)
-	dialog.popup_centered(Vector2i(500, 500))
+	dialog.popup_centered(Vector2i(600, 600))
 	
 func open_sheet_collection_loader():
 	var dialog := FileDialog.new()
@@ -342,7 +387,7 @@ func open_sheet_collection_loader():
 	)
 
 	add_child(dialog)
-	dialog.popup_centered(Vector2i(500, 500))
+	dialog.popup_centered(Vector2i(600, 600))
 		
 func save_active_sheet_collection(path: String):
 	var save_dict := ApplicationContext.sheet_collection_active.to_dict()
@@ -371,7 +416,7 @@ func _on_random_button_pressed() -> void:
 	update_lpc_layer_view()
 	
 		
-	ResourceSaver.save(satf_animation_preview.satf_sprite_resource, "res://resources/satf_random.tres")
+	
 
 func _satf_animation_preview_frame_changed(value: int):
 	frame_container.update(satf_animation_preview.satf_sprite_resource, satf_animation_preview.animation, satf_animation_preview.direction, satf_animation_preview.animation_frame)
@@ -448,3 +493,18 @@ func _on_load_button_pressed() -> void:
 
 func _on_save_button_pressed() -> void:
 	open_sheet_collection_saver()
+
+
+func _on_play_pause_button_pressed() -> void:
+	if satf_animation_player.is_playing():
+		satf_animation_player.pause()
+	else:
+		play_lcp_animation()
+
+
+func _on_export_satf_button_pressed() -> void:
+	open_satf_exporter()
+
+
+func _on_export_satf_resource_button_pressed() -> void:
+	open_satf_resource_exporter()

@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c13ybc1662rtg" path="res://ui/controls/VariantScaleControl.gd" id="2_xl5ik"]
 [ext_resource type="Texture2D" uid="uid://smhibk5yuwex" path="res://assets/ui/RandomNumberGenerator.svg" id="2_y8oxd"]
 [ext_resource type="Script" uid="uid://cujk4fdxqgb4p" path="res://ui/controls/LayerContainer.gd" id="3_rdsxb"]
+[ext_resource type="Texture2D" uid="uid://bn3mv3u851d5q" path="res://assets/ui/GDScript.svg" id="3_uypsg"]
 [ext_resource type="Texture2D" uid="uid://drrp0u7kydejf" path="res://assets/ui/Save.svg" id="3_y8oxd"]
 [ext_resource type="Script" uid="uid://dsc1p2at37gsa" path="res://ui/controls/FrameTimeline.gd" id="4_yheby"]
 [ext_resource type="Script" uid="uid://cursdeatl3ygy" path="res://addons/SATF/runtime/animation_player/SATFAnimationPlayer.gd" id="6_v2r1i"]
@@ -23,6 +24,7 @@
 [ext_resource type="Material" uid="uid://cfu7aqbqihwgx" path="res://material/Checkerboard.tres" id="17_yheby"]
 [ext_resource type="Texture2D" uid="uid://dt7nceg5xval" path="res://assets/ui/1x1.png" id="18_rdsxb"]
 [ext_resource type="Script" uid="uid://b64hyfn5m3vrp" path="res://addons/SATF/runtime/sprite/node/SATFSprite.gd" id="18_yheby"]
+[ext_resource type="Texture2D" uid="uid://bnydtpfo2fc4p" path="res://assets/ui/Play.svg" id="20_uypsg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_adhq1"]
 bg_color = Color(0.24705882, 0.24705882, 0.24705882, 1)
@@ -3715,17 +3717,31 @@ text = "Variant"
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer/MainButtonContainer" unique_id=1059144885]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Settings"
+icon = ExtResource("3_uypsg")
 
 [node name="LoadButton" type="Button" parent="VBoxContainer/MainButtonContainer" unique_id=1983255549]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Load"
 icon = ExtResource("2_gi44n")
 
 [node name="SaveButton" type="Button" parent="VBoxContainer/MainButtonContainer" unique_id=1947932601]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Save"
 icon = ExtResource("3_y8oxd")
+
+[node name="ExportSATFButton" type="Button" parent="VBoxContainer/MainButtonContainer" unique_id=1469255953]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Export"
+
+[node name="ExportSATFResourceButton" type="Button" parent="VBoxContainer/MainButtonContainer" unique_id=599673899]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Export Binary"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1911497184]
 layout_mode = 2
@@ -3918,11 +3934,11 @@ parameters/watering/blend_position = Vector2(0, 0)
 script = ExtResource("16_a4d7p")
 metadata/_custom_type_script = "uid://c5yu2osw8da3q"
 
-[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel" unique_id=142006223]
+[node name="Pivot" type="Control" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel" unique_id=142006223]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control" unique_id=55751619]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Pivot" unique_id=55751619]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -3935,79 +3951,87 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="DirectionContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer" unique_id=1520180770]
+[node name="DirectionContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Pivot/MarginContainer" unique_id=1520180770]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer" unique_id=1890345209]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Pivot/MarginContainer/DirectionContainer" unique_id=1890345209]
 layout_mode = 2
 theme_override_constants/margin_left = 3
 theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 3
 
-[node name="DirectionSelector" type="GridContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer" unique_id=1185642017]
+[node name="DirectionSelector" type="GridContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Pivot/MarginContainer/DirectionContainer/MarginContainer" unique_id=1185642017]
 unique_name_in_owner = true
 layout_mode = 2
 columns = 3
 script = ExtResource("8_gd61k")
 
-[node name="NWSpacer" type="Control" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" unique_id=362002972]
+[node name="NWSpacer" type="Control" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Pivot/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" unique_id=362002972]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="UpButton" type="Button" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" unique_id=1107150049]
+[node name="UpButton" type="Button" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Pivot/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" unique_id=1107150049]
 layout_mode = 2
 focus_mode = 0
 icon = ExtResource("8_buyoq")
 icon_alignment = 1
 
-[node name="NESpacer" type="Control" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" unique_id=908109802]
+[node name="NESpacer" type="Control" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Pivot/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" unique_id=908109802]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="LeftButton" type="Button" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" unique_id=1484132865]
+[node name="LeftButton" type="Button" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Pivot/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" unique_id=1484132865]
 layout_mode = 2
 focus_mode = 0
 icon = ExtResource("9_gd61k")
 icon_alignment = 1
 
-[node name="MiddleSpacer" type="Control" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" unique_id=1050749828]
+[node name="MiddleSpacer" type="Control" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Pivot/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" unique_id=1050749828]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="RightButton" type="Button" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" unique_id=913912453]
+[node name="RightButton" type="Button" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Pivot/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" unique_id=913912453]
 layout_mode = 2
 focus_mode = 0
 icon = ExtResource("10_3syfw")
 icon_alignment = 1
 
-[node name="SWSpacer" type="Control" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" unique_id=1298121996]
+[node name="SWSpacer" type="Control" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Pivot/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" unique_id=1298121996]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="DownButton" type="Button" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" unique_id=1216713759]
+[node name="DownButton" type="Button" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Pivot/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" unique_id=1216713759]
 layout_mode = 2
 focus_mode = 0
 icon = ExtResource("11_u8ull")
 icon_alignment = 1
 
-[node name="SESpacer" type="Control" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" unique_id=1129648094]
+[node name="SESpacer" type="Control" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Pivot/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" unique_id=1129648094]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control" unique_id=384992498]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Pivot2" type="Control" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel" unique_id=334540273]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Pivot2" unique_id=1493026368]
+layout_mode = 0
+offset_top = 503.0
+offset_right = 170.0
+offset_bottom = 539.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Pivot2/MarginContainer2" unique_id=1369783826]
+layout_mode = 2
+
+[node name="PlayPauseButton" type="Button" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Pivot2/MarginContainer2/HBoxContainer" unique_id=551383571]
+layout_mode = 2
+icon = ExtResource("20_uypsg")
 
 [node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer" unique_id=1178034915]
 layout_mode = 2
@@ -4069,13 +4093,16 @@ region_rect = Rect2(0, 0, 64, 64)
 [connection signal="pressed" from="VBoxContainer/MainButtonContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainButtonContainer/LoadButton" to="." method="_on_load_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainButtonContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainButtonContainer/ExportSATFButton" to="." method="_on_export_satf_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainButtonContainer/ExportSATFResourceButton" to="." method="_on_export_satf_resource_button_pressed"]
 [connection signal="item_selected" from="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer/BodyTypes" to="." method="_on_bodytypes_button_item_selected"]
 [connection signal="item_selected" from="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/SheetDefinitionTree" to="." method="_on_sheet_definition_tree_item_selected"]
 [connection signal="item_selected" from="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer/HBoxContainer/PaletteOption" to="." method="_on_palette_option_item_selected"]
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer/HBoxContainer/VariantScaleControl/VBoxContainer/VariantPreviewScaleSlider" to="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer/VSplitContainer/VBoxContainer/HBoxContainer/VariantScaleControl" method="_on_variant_preview_scale_slider_value_changed"]
 [connection signal="item_selected" from="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/VBoxContainer/AnimationSelector" to="." method="_on_animation_selector_item_selected"]
-[connection signal="direction_pressed" from="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" to="." method="_on_direction_selector_direction_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector/UpButton" to="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" method="_on_up_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector/LeftButton" to="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" method="_on_left_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector/RightButton" to="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" method="_on_right_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector/DownButton" to="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Control/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" method="_on_down_button_pressed"]
+[connection signal="direction_pressed" from="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Pivot/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" to="." method="_on_direction_selector_direction_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Pivot/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector/UpButton" to="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Pivot/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" method="_on_up_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Pivot/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector/LeftButton" to="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Pivot/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" method="_on_left_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Pivot/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector/RightButton" to="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Pivot/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" method="_on_right_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Pivot/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector/DownButton" to="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Pivot/MarginContainer/DirectionContainer/MarginContainer/DirectionSelector" method="_on_down_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/HSplitContainer/VBoxContainer2/HSplitContainer/PreviewPanel/Pivot2/MarginContainer2/HBoxContainer/PlayPauseButton" to="." method="_on_play_pause_button_pressed"]

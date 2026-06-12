@@ -29,7 +29,7 @@ func from_dict(dict: Dictionary) -> bool:
 	var result: bool = true
 	
 	if dict.has("material_domain"):
-		material_domain.set_value(dict["base_path"])
+		material_domain.set_value(dict["material_domain"])
 		
 	if dict.has("collection"):
 		collection = dict["collection"]
